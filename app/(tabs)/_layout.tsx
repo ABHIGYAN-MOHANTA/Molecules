@@ -1,25 +1,33 @@
 import { Link, Tabs } from "expo-router";
 import { Pressable } from "react-native";
-import { Text } from "tamagui";
-import { Button } from "tamagui";
-import { Home } from "@tamagui/lucide-icons";
+import { Home, BarChart2, Book, DraftingCompass } from "@tamagui/lucide-icons";
 
 export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: "red",
+        tabBarActiveTintColor: "white",
+        tabBarInactiveTintColor: "$gray10",
+        tabBarLabelStyle: { color: "gray" },
+        headerStyle: {
+          backgroundColor: "gray",
+        },
+        headerTintColor: "black",
+        headerTitleStyle: {
+          fontWeight: "bold",
+          fontSize: 24,
+        },
       }}
     >
       <Tabs.Screen
         name="index"
         options={{
-          title: "Home",
-          tabBarIcon: ({ color }) => <Text>Hello</Text>,
+          title: "Molecules",
+          tabBarIcon: ({ color }) => <Home size={24} color={color} />,
           headerRight: () => (
-            <Link href="/modal" asChild>
+            <Link href="/about" asChild>
               <Pressable>
-                <Button icon={Home}></Button>
+                <DraftingCompass size={24} marginRight={10} color={"$gray1"} />
               </Pressable>
             </Link>
           ),
@@ -28,15 +36,29 @@ export default function TabLayout() {
       <Tabs.Screen
         name="two"
         options={{
-          title: "Tab Two",
-          tabBarIcon: ({ color }) => <Text>Hello!</Text>,
+          title: "Progress",
+          tabBarIcon: ({ color }) => <BarChart2 size={24} color={color} />,
+          headerRight: () => (
+            <Link href="/about" asChild>
+              <Pressable>
+                <DraftingCompass size={24} marginRight={10} color={"$gray1"} />
+              </Pressable>
+            </Link>
+          ),
         }}
       />
       <Tabs.Screen
         name="three"
         options={{
-          title: "Tab Three",
-          tabBarIcon: ({ color }) => <Text>Hello!</Text>,
+          title: "Mindset",
+          tabBarIcon: ({ color }) => <Book size={24} color={color} />,
+          headerRight: () => (
+            <Link href="/about" asChild>
+              <Pressable>
+                <DraftingCompass size={24} marginRight={10} color={"$gray1"} />
+              </Pressable>
+            </Link>
+          ),
         }}
       />
     </Tabs>
